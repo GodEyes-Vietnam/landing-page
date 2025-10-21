@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" type="image/png" href="assets/godeyes-logo.png" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -57,8 +57,8 @@
               <a class="cta-button ghost" href="#solution">Khám phá giải pháp</a>
             </div>
           </div>
-          <div class="hero-highlights">
-            <article class="hero-card">
+          <div class="hero-highlights" data-active-index="0">
+            <article class="hero-card is-active" data-highlight="0">
               <img
                 src="assets/godeyes-logo-full.png"
                 alt="Hình ảnh trung tâm chỉ huy GodEyes"
@@ -73,7 +73,7 @@
                 </ul>
               </div>
             </article>
-            <article class="hero-card">
+            <article class="hero-card" data-highlight="1">
               <img
                 src="assets/highlight-ai.png"
                 alt="AI Assistant GodEyes"
@@ -88,7 +88,7 @@
                 </ul>
               </div>
             </article>
-            <article class="hero-card">
+            <article class="hero-card" data-highlight="2">
               <img
                 src="assets/highlight-field.png"
                 alt="Ứng dụng hiện trường GodEyes"
@@ -103,6 +103,11 @@
                 </ul>
               </div>
             </article>
+          </div>
+          <div class="hero-dots" role="tablist" aria-label="Điều hướng nổi bật GodEyes">
+            <button class="hero-dot is-active" type="button" data-target="0" role="tab" aria-label="Trung tâm điều hành realtime" aria-selected="true" tabindex="0"></button>
+            <button class="hero-dot" type="button" data-target="1" role="tab" aria-label="AI Assistant chủ động" aria-selected="false" tabindex="-1"></button>
+            <button class="hero-dot" type="button" data-target="2" role="tab" aria-label="Ứng dụng hiện trường" aria-selected="false" tabindex="-1"></button>
           </div>
         </div>
       </section>
@@ -342,6 +347,39 @@
               Nhóm sáng lập tinh gọn dưới 10 thành viên kết hợp kinh nghiệm bảo vệ, công nghệ AI và vận hành doanh nghiệp để triển khai GodEyes nhanh gọn, minh bạch.
             </p>
           </div>
+          <div class="team-members">
+            <article class="member-card">
+              <img class="member-avatar" src="assets/founder-luan.png" alt="Tô Văn Luân" />
+              <h3>Tô Văn Luân</h3>
+              <p class="member-role">CEO &amp; Founder</p>
+              <p>Chịu trách nhiệm chiến lược tổng thể và tăng trưởng thị trường.</p>
+              <ul>
+                <li>Điều hành vận hành, xây dựng quan hệ khách hàng &amp; đối tác.</li>
+                <li>Định hình lộ trình thương mại hóa và mô hình kinh doanh.</li>
+              </ul>
+            </article>
+            <article class="member-card">
+              <img class="member-avatar" src="assets/founder-hoang.png" alt="Ngô Văn Hoàng" />
+              <h3>Ngô Văn Hoàng</h3>
+              <p class="member-role">CTO &amp; Co-founder</p>
+              <p>Lãnh đạo kiến trúc kỹ thuật, bảo đảm năng lực AI và hạ tầng hybrid.</p>
+              <ul>
+                <li>Thiết kế nền tảng đa tenant, bảo mật và khả dụng cao.</li>
+                <li>Điều phối phát triển AI, tích hợp camera, GPS và cảm biến.</li>
+              </ul>
+            </article>
+            <article class="member-card">
+              <img class="member-avatar" src="assets/founder-anh.png" alt="Kiều Nhật Anh" />
+              <h3>Kiều Nhật Anh</h3>
+              <p class="member-role">CHRO, CFO &amp; Co-founder</p>
+              <p>Quản trị tổ chức tinh gọn, tài chính và nguồn vốn cho GodEyes.</p>
+              <ul>
+                <li>Xây dựng quy trình nhân sự, chính sách đãi ngộ và văn hóa.</li>
+                <li>Kiểm soát ngân sách, huy động vốn và quản trị rủi ro tài chính.</li>
+              </ul>
+            </article>
+          </div>
+
           <div class="team-grid">
             <article class="card">
               <h3>Lãnh đạo &amp; Chiến lược</h3>
@@ -376,42 +414,6 @@
               </ul>
             </article>
           </div>
-
-          <div class="team-members">
-            <article class="member-card">
-              <div class="member-avatar ceo"><span>HP</span></div>
-              <h3>Hồ Phan An</h3>
-              <p class="member-role">CEO &amp; Founder</p>
-              <p>
-                Định hướng chiến lược GodEyes, dẫn dắt quan hệ đối tác và đảm bảo giá trị sản phẩm bám sát nhu cầu ngành bảo vệ.
-              </p>
-            </article>
-            <article class="member-card">
-              <div class="member-avatar cto"><span>MK</span></div>
-              <h3>Trần Minh Khoa</h3>
-              <p class="member-role">CTO</p>
-              <p>
-                Kiến trúc sư trưởng nền tảng, phụ trách AI, bảo mật và khả năng mở rộng multi-tenant cho hàng nghìn điểm giám sát.
-              </p>
-            </article>
-            <article class="member-card">
-              <div class="member-avatar cfo"><span>TH</span></div>
-              <h3>Lê Thu Hà</h3>
-              <p class="member-role">CFO</p>
-              <p>
-                Thiết kế mô hình tài chính, tối ưu chi phí triển khai – vận hành và bảo đảm minh bạch cho nhà đầu tư, đối tác.
-              </p>
-            </article>
-            <article class="member-card">
-              <div class="member-avatar coo"><span>GB</span></div>
-              <h3>Nguyễn Gia Bảo</h3>
-              <p class="member-role">COO</p>
-              <p>
-                Điều phối triển khai thực địa, xây dựng quy trình chuẩn và giám sát SLA 24/7 cho khách hàng doanh nghiệp.
-              </p>
-            </article>
-          </div>
-
           <div class="team-highlight">
             <div class="metric-card">
               <span class="metric-value">&lt;=10</span>
@@ -451,10 +453,6 @@
               <li>
                 <span class="pillar-title">Sứ mệnh</span>
                 <p>Giúp bạn nhìn thấy, hiểu, tự tin và hành động đúng.</p>
-              </li>
-              <li>
-                <span class="pillar-title">Đội ngũ tinh gọn</span>
-                <p>Dưới 10 thành viên, tối ưu hóa bằng AI từ phát triển tới vận hành.</p>
               </li>
             </ul>
           </div>
@@ -520,6 +518,10 @@
         </div>
       </div>
     </footer>
+
+    <button class="to-top" type="button" aria-label="Trở về đầu trang">
+      ↑
+    </button>
 
     <script src="script.js"></script>
   </body>

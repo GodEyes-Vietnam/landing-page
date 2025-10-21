@@ -238,13 +238,20 @@ ul {
 }
 
 .hero-highlights {
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  position: relative;
+  margin-top: 1.5rem;
+  min-height: 420px;
+  padding-bottom: 1rem;
 }
 
 .hero-card {
-  position: relative;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(18px);
+  transition: opacity 0.45s ease, transform 0.45s ease, box-shadow 0.3s ease;
   background: var(--color-surface);
   padding: 2rem;
   border-radius: var(--radius-lg);
@@ -253,10 +260,16 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.hero-card:hover {
+.hero-card.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.hero-card.is-active:hover {
   transform: translateY(-4px);
   box-shadow: 0 28px 60px rgba(29, 64, 123, 0.4);
 }
@@ -287,6 +300,69 @@ ul {
   color: var(--color-muted);
   font-size: 0.9rem;
   line-height: 1.5;
+}
+
+.hero-dots {
+  margin-top: 1.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.hero-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.25);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero-dot.is-active {
+  width: 36px;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-strong));
+  box-shadow: 0 10px 24px rgba(71, 177, 255, 0.35);
+}
+
+.hero-dot:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(71, 177, 255, 0.35);
+}
+
+.to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(12, 17, 30, 0.85);
+  color: #fff;
+  font-size: 1.1rem;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(16px);
+  transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s ease;
+  z-index: 15;
+}
+
+.to-top:hover,
+.to-top:focus-visible {
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-strong));
+  border-color: transparent;
+}
+
+.to-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
 .section {
@@ -322,6 +398,7 @@ ul {
   display: grid;
   gap: 1.5rem;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  margin-top: 3rem;
 }
 
 .team-members {
@@ -362,37 +439,33 @@ ul {
   margin: 0;
 }
 
-.member-avatar {
-  width: 88px;
-  height: 88px;
-  border-radius: 50%;
+.member-card ul {
+  margin: 0;
+  padding: 0;
   display: grid;
-  place-items: center;
-  font-weight: 600;
-  font-size: 1.4rem;
-  color: #fff;
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  gap: 0.5rem;
+  text-align: left;
+}
+
+.member-card ul li {
+  position: relative;
+  padding-left: 1.1rem;
+}
+
+.member-card ul li::before {
+  content: "\2022";
+  position: absolute;
+  left: 0;
+  color: var(--color-accent);
+}
+
+.member-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.25);
   box-shadow: 0 18px 30px rgba(31, 120, 255, 0.25);
-}
-
-.member-avatar span {
-  letter-spacing: 0.04em;
-}
-
-.member-avatar.ceo {
-  background: linear-gradient(135deg, #64d1ff, #1f78ff);
-}
-
-.member-avatar.cto {
-  background: linear-gradient(135deg, #8f9bff, #4856ff);
-}
-
-.member-avatar.cfo {
-  background: linear-gradient(135deg, #f8a8ff, #a46bff);
-}
-
-.member-avatar.coo {
-  background: linear-gradient(135deg, #6ef3c7, #2cce8f);
 }
 
 .team-highlight {
@@ -854,10 +927,6 @@ ul {
     grid-template-columns: 1fr;
   }
 
-  .hero-card {
-    order: -1;
-  }
-
   .site-nav {
     position: fixed;
     inset: 0 0 auto;
@@ -880,7 +949,12 @@ ul {
   }
 
   .hero-highlights {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    min-height: 360px;
+  }
+
+  .to-top {
+    bottom: 1.5rem;
+    right: 1.5rem;
   }
 
   .diagram-level::after,
@@ -933,7 +1007,12 @@ ul {
   }
 
   .hero-highlights {
-    grid-template-columns: 1fr;
+    min-height: 320px;
+  }
+
+  .to-top {
+    bottom: 1.25rem;
+    right: 1.25rem;
   }
 
   .grid-3 {
@@ -946,10 +1025,15 @@ ul {
     padding: 1.5rem;
   }
 
-  .overlay-card {
-    left: 1.2rem;
-    right: 1.2rem;
-    bottom: -2rem;
+  .hero-highlights {
+    min-height: 280px;
+    padding-bottom: 0.5rem;
+  }
+
+  .to-top {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
   }
 
   .brand img {
