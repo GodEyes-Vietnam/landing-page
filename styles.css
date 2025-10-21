@@ -240,7 +240,7 @@ ul {
 .hero-highlights {
   position: relative;
   margin-top: 1.5rem;
-  min-height: 420px;
+  min-height: clamp(440px, 55vw, 560px);
   padding-bottom: 1rem;
 }
 
@@ -260,6 +260,7 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  min-height: clamp(440px, 55vw, 560px);
 }
 
 .hero-card.is-active {
@@ -1031,6 +1032,7 @@ ul {
     transform: none;
     display: none;
     box-shadow: var(--shadow-soft);
+    min-height: unset;
   }
 
   .hero-card.is-active {
@@ -1058,7 +1060,7 @@ ul {
   }
 
   .hero-highlights {
-    min-height: 0;
+    min-height: 500px;
     padding-bottom: 0.5rem;
   }
 
